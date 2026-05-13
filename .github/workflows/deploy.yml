@@ -1,0 +1,30 @@
+name: Deploy Pipeline
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  deploy-dev:
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: dev
+
+    steps:
+      - name: Deploy to Dev
+        run: echo "Deploying to Dev Environment"
+
+  deploy-prod:
+
+    needs: deploy-dev
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: prod
+
+    steps:
+      - name: Deploy to Prod
+        run: echo "Deploying to Production Environment"
